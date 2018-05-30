@@ -12,7 +12,7 @@ const p1 = new Promise((resolve) => {
     .catch(function() { 
         // do nothing, probably the collection didn't exist
     })
-    .finally(function() {
+    .then(function() {
         User.create([
             {
                 email: "test@example.com",
@@ -28,9 +28,9 @@ const p1 = new Promise((resolve) => {
             }
         ]).then(users => {
             console.log(`${users.length} users created`);
+            resolve();
         }).catch((err) => {
             console.log(err);
-        }).finally(function() {
             resolve();
         });
     });
@@ -41,7 +41,7 @@ const p2 = new Promise((resolve) => {
     .catch(function() {
         // do nothing, probably the collection didn't exist
     })
-    .finally(function() {
+    .then(function() {
         const products = [
             { file: 'nutella.jpg', name: "Nutella Spray", price: 3.5 },
             { file: 'peanut.jpg', name: "Peanuts Butter", price: 2.25 },
@@ -59,9 +59,9 @@ const p2 = new Promise((resolve) => {
         
         Product.create(products).then(products => {
             console.log(`${products.length} products created`);
+            resolve();
         }).catch((err) => {
             console.log(err);
-        }).finally(() => {
             resolve();
         }); 
     });

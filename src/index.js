@@ -68,4 +68,8 @@ function cart() {
     cartComponent.attach(container);
 }
 
+function scrivivalore() {
+    //ho attrinuito la classe .cart-items al bottone in modo da accedere con $()
+    $('.cart-items').text((store.get('cart') || []).length);
+}
 page.start();
