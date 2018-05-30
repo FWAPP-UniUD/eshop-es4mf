@@ -85,6 +85,8 @@ class ProductList {
                         cart.push({ item: bought_item, quantity: 1 });
                     }
                     store.set('cart', cart);
+                    //$('.cart-items').text((store.get('cart') || []).length);
+
                 });
             }
         }); 
