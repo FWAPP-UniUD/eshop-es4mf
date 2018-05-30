@@ -86,7 +86,7 @@ class ProductList {
                     }
                     store.set('cart', cart);
                     //$('.cart-items').text((store.get('cart') || []).length);
-
+//se riesco salvo una variabile e poi incremento di 1 se l'oggetto è già presente
                 });
             }
         }); 
