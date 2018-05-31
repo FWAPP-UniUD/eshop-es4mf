@@ -17,7 +17,7 @@ page('*', notfound);
 
 const loginComponent = new Login(), productList = new ProductList(), cartComponent = new Cart();
 
-function check_login(ctx, next) {
+function check_login(ctx, next) { //ctx è un contesto, next è quello delle applicazioni express, fondamentale se ho più funzioni sulla rotta
     if (store.get('logged_in')) {
         $('#my-navbar a[href="/login"]').hide(); //nasconde login e mostra logout
         $('#my-navbar a[href="/logout"]').show();
@@ -31,7 +31,7 @@ function check_login(ctx, next) {
 
 function index() {
     $(container).empty();
-    $('#my-navbar a').removeClass('active');
+    $('#my-navbar a').removeClass('active'); //mostra la sezione in cui mi trovo
     $('#my-navbar a[href="/"]').addClass('active');
 }
 
@@ -43,7 +43,7 @@ function login() {
         $('#my-navbar a[href="/login"]').addClass('active');
     } else {
         // goes back to the previous URL (i.e., where Login was pressed)     
-        history.go(-1);
+        history.go(-1); // (ritorna alla pagina dove il login è stato chiamato)
     }
 }
 
