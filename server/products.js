@@ -7,8 +7,8 @@ const router = Router();
 
 // middleware to get limit and page for paging
 router.use('/', function(req, res, next) {
-    req.limit = req.query.limit || 3;
-    req.page = req.query.page || 1;
+    req.limit = req.query.limit || 3; //elementi per pagina, noi non lo richiediamo
+    req.page = req.query.page || 1;//o è un valore oppure usa il valore di default
     next();
 });
 

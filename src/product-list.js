@@ -7,8 +7,8 @@ const paginationTemplate = (current, pages, prevPage, nextPage) => `
         <a class="item" data-page="${i + 1}">${i + 1}</a>
     `).join("\n")}
 </div>
-`;
-
+`;//non ho una url, non uso href, data è personalizzabile
+    //array tra 0 e n-1 da qui il +1   
 const htmlTemplate = (products) => `
 <div class="ui cards">
   <div class="ui disabled text loader">Loading</div>
@@ -51,8 +51,8 @@ class ProductList {
     }
 
     loadProducts(page) {
-        const url = `/api/products?page=${page}`;
-        $(this.mainElement).find('.loader').removeClass("disabled").addClass("active");
+        const url = `/api/products?page=${page}`;//in quale pagina voglio andare
+        $(this.mainElement).find('.loader').removeClass("disabled").addClass("active");//attivo il simbolo di loading
         fetch(url).then((response) => {
             if (response.ok) {
                 return response.json();
@@ -65,9 +65,9 @@ class ProductList {
                 $(this.mainElement).append('<div class="ui divider"></div>');
                 // define also a pagination element
                 $(this.mainElement).append(paginationTemplate(result.current_page, result.pages, result.prevPage, result.nextPage));
-                $(this.mainElement).find('.pagination .item').click((event) => {
+                $(this.mainElement).find('.pagination .item').click((event) => { //gestore eventi
                     event.preventDefault();
-                    this.loadProducts(event.currentTarget.dataset.page);
+                    this.loadProducts(event.currentTarget.dataset.page);//in dataset trovo i campi custom data-page (dataset.page)
                 });
                 // and register the event handler for the pagination element
                 $(this.mainElement).find(`.pagination a.item`).removeClass('active');
@@ -76,7 +76,7 @@ class ProductList {
                 $(this.mainElement).find(".add-product").click((event) => {
                     event.preventDefault(); // actually there is no href, so no default
                     const bought_item = event.currentTarget.dataset.product;
-                    const cart = store.get('cart') || [];
+                    const cart = store.get('cart') || []; //store virtualizza localStorage e sessionStorage, memoria del browser
                     // search for the bought_item in the cart
                     const item = cart.find(value => value.item == bought_item);
                     if (item) {
@@ -94,4 +94,4 @@ class ProductList {
 
 }
 
-export default ProductList; 
+export default ProductList; //visualizza dati, paginazione ed add to cart
