@@ -8,7 +8,7 @@ import store from 'store';
 
 const container = document.querySelector(".my-component");
 
-page('/', check_login, index);
+page('/', check_login, index); //rotte-ho due funzioni registrate (posso averne n) eseguite in sequenza. Mi dicono "arrivato qui fai...""
 page('/products', check_login, products);
 page('/cart', check_login, cart);
 page('/login', login);
@@ -19,7 +19,7 @@ const loginComponent = new Login(), productList = new ProductList(), cartCompone
 
 function check_login(ctx, next) {
     if (store.get('logged_in')) {
-        $('#my-navbar a[href="/login"]').hide();
+        $('#my-navbar a[href="/login"]').hide(); //nasconde login e mostra logout
         $('#my-navbar a[href="/logout"]').show();
     } else {
         $('#my-navbar a[href="/login"]').show();
