@@ -44,9 +44,9 @@ class ProductList {
         $(this.mainElement).addClass('ui segment');
     }
 
-    attach(containerElement) {
-        this.page = 1;
-        $(this.mainElement).html(htmlTemplate([])).appendTo(containerElement);        
+    attach(containerElement) { //visualizzo nella pagina
+        this.page = 1;//in che pagina ci troviamo
+        $(this.mainElement).html(htmlTemplate([])).appendTo(containerElement); //voglio creare un nuovo contenuto       
         this.loadProducts(this.page);
     }
 
