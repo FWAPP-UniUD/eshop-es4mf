@@ -8,7 +8,7 @@ import config from './config';
 
 import products from './products';
 
-//mongoose.connect(config.db);
+mongoose.connect(config.db);
 
 const app = express();
 
